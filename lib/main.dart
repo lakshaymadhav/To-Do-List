@@ -31,7 +31,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     super.initState();
     list.add("Welcome to To-Do List");
     list.add("Use the + Button to Add an Entry to the List ");
-    list.add("Swipe Right to delete an Entry in the list");
+    list.add("Swipe Right (or) Left to delete an Entry in the list");
     list.add("New Features coming on!!");
     list.add("To Request a feature, Ping me on ");
     list.add("Email: lakshaymadhav25@gmail.com");
@@ -75,27 +75,27 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           },
         ), 
         body: ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (BuildContext context,int index) {
-              return Padding(
-                padding: EdgeInsets.only(top:5.0,left: 5.0,right: 5.0),
-                child: Card(
-                        child: Dismissible(
-                    key: Key(list[index]),
-                    
-                    child:ListTile(
-                      title: Text(list[index])
-                    ),
-                    onDismissed: (direction){
-                      setState(() {
-                        list.removeAt(index);
-                      });
-                    },   
-                  ),
-                 ),
-              );
-            } ,
-          ), 
+              itemCount: list.length,
+              itemBuilder: (BuildContext context,int index) {
+                return Padding(
+             padding: EdgeInsets.only(top:5.0,left: 5.0,right: 5.0),
+            child: Dismissible(
+            key: Key(list[index]),
+            child:Card(
+                child: ListTile(
+                title: Text(list[index])
+              ),
+            ),
+            onDismissed: (direction){
+              setState(() {
+                list.removeAt(index);
+              });
+            },   
+          ),
+         
+                );
+              } ,
+            ), 
     );
      
   }
